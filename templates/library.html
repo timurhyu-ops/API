@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav><a href="/">SEARCH</a> <a href="/library">MY LIBRARY</a></nav>
+    <div class="container">
+        <h1>My Collection</h1>
+        {% if songs %}
+            <div class="grid">
+                {% for s in songs %}
+                <div class="track-card">
+                    <img src="{{ s.img }}" class="track-img">
+                    <strong>{{ s.name }}</strong><br>
+                    <small>{{ s.artist }}</small>
+                </div>
+                {% endfor %}
+            </div>
+            <br><a href="/clear" style="color:gray">Clear Collection</a>
+        {% else %}
+            <p>Your library is empty. Go search for some beats!</p>
+        {% endif %}
+    </div>
+</body>
+</html>
